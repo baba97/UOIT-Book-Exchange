@@ -9,16 +9,22 @@ p
 }
 
 
+.section2
+{
+  clear: left;
+}
+
 #recent
 {
   width: 90%;
+  margin: auto;
 }
 
 #recentRow
 {
   width: 95%;
   padding: 25px;
-  margin: auto;
+  margin: auto
 }
 
 .Promo
@@ -47,5 +53,39 @@ p
 .list
 {
   position: relative;
-  left: -30%;
+  left: -20%;
+}
+
+.Welcome
+{
+  text-align: center;
+  margin: 5%
+}
+
+.textWelcome
+{
+  width: 50%;
+  float: right;
+}
+
+.imageWelcome
+{
+  width: 40%;
+  float: left;
+}
+
+#image1
+{
+  height: 40%;
+  width: 40%;
+  margin: auto;
+  vertical-align: middle;
+}
+
+#recentP
+{
+  height: 100%;
+  width: 100%;
+  margin: auto;
+  vertical-align: middle;
 }
