@@ -89,3 +89,8 @@ p
   margin: auto;
   vertical-align: middle;
 }
+
+#form
+{
+  padding: 15px;
+}
