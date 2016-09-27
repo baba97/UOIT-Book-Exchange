@@ -1,0 +1,51 @@
+h3
+{
+  padding:15px;
+}
+
+p
+{
+  word-wrap: break-word;
+}
+
+
+#recent
+{
+  width: 90%;
+}
+
+#recentRow
+{
+  width: 95%;
+  padding: 25px;
+  margin: auto;
+}
+
+.Promo
+{
+  text-align: center;
+  margin: 5%
+}
+
+.textPromo
+{
+  float: left;
+  width: 50%;
+}
+
+.listPromo
+{
+  float: right;
+  width: 40%;
+}
+
+.listPromo li
+{
+  padding: 10px;
+}
+
+.list
+{
+  position: relative;
+  left: -30%;
+}
