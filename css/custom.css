@@ -35,8 +35,8 @@ p
 
 .textPromo
 {
-  float: left;
-  width: 70%;
+  text-align: center;
+  float: right;
 }
 
 .listPromo
