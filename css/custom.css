@@ -33,7 +33,20 @@ p
   margin: 5%
 }
 
+.Welcome
+{
+  text-align: center;
+  margin: 5%
+}
+
 .textPromo
+{
+  text-align: center;
+  float: right;
+}
+
+
+.textWelcome
 {
   text-align: center;
   float: right;
@@ -42,7 +55,7 @@ p
 .listPromo
 {
   float: right;
-  width: 30%;
+  /*width: 30%;*/
 }
 
 .listPromo li
@@ -56,17 +69,6 @@ p
   left: -20%;
 }
 
-.Welcome
-{
-  text-align: center;
-  margin: 5%
-}
-
-.textWelcome
-{
-  text-align: center;
-  float: right;
-}
 
 .imageWelcome
 {
