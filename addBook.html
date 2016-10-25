@@ -69,7 +69,7 @@
 
           <ul class="nav navbar-nav navbar-right">
             <li class="active"><a href="addBook.html">Add a Book</a></li>
-            <li><a href="#">About Us</a></li>
+            <li><a href="about.html">About Us</a></li>
           </ul>
         </div>
       </div>
@@ -83,7 +83,7 @@
   </div>
 
   <div id="form">
-    <form class="form-horizontal">
+    <form id="test" class="form-horizontal">
   <fieldset>
 
     <div class=page-header>
@@ -93,14 +93,14 @@
     <div class="form-group">
       <label for="title" class="col-lg-2 control-label">Title</label>
       <div class="col-lg-10">
-        <input type="text" class="form-control" id="title" placeholder="Title of Book">
+        <input type="text" class="form-control" id="title" name="title" placeholder="Title of Book">
       </div>
     </div>
 
     <div class="form-group">
       <label for="author" class="col-lg-2 control-label">Author</label>
       <div class="col-lg-10">
-        <input type="text" class="form-control" id="author" placeholder="Author">
+        <input type="text" class="form-control" id="author" name="author" placeholder="Author">
       </div>
     </div>
 
@@ -110,43 +110,43 @@
 
         <div class="checkbox">
           <label>
-            <input type="checkbox"> Buisness & IT
+            <input type="checkbox" name="checkbox[]"> Buisness & IT
           </label>
         </div>
 
         <div class="checkbox">
           <label>
-            <input type="checkbox"> Education
+            <input type="checkbox" name="checkbox[]"> Education
           </label>
         </div>
 
         <div class="checkbox">
           <label>
-            <input type="checkbox"> Engineering
+            <input type="checkbox" name="checkbox[]"> Engineering
           </label>
         </div>
 
         <div class="checkbox">
           <label>
-            <input type="checkbox"> Nuclear and Energy
+            <input type="checkbox" name="checkbox[]"> Nuclear and Energy
           </label>
         </div>
 
         <div class="checkbox">
           <label>
-            <input type="checkbox"> Health Science
+            <input type="checkbox" name="checkbox[]"> Health Science
           </label>
         </div>
 
         <div class="checkbox">
           <label>
-            <input type="checkbox"> Science
+            <input type="checkbox" name="checkbox[]"> Science
           </label>
         </div>
 
         <div class="checkbox">
           <label>
-            <input type="checkbox"> Social Science
+            <input type="checkbox" name="checkbox[]"> Social Science
           </label>
         </div>
 
@@ -158,23 +158,23 @@
       <div class="col-lg-10">
         <div class="radio">
           <label>
-            <input type="radio" name="optionsRadios" id="mint" value="mint">
+            <input type="radio" name="optionsRadios[]" id="mint" value="mint">
             Mint
           </label>
         </div>
         <div class="radio">
           <label>
-            <input type="radio" name="optionsRadios" id="vgood" value="very good">
+            <input type="radio" name="optionsRadios[]" id="vgood" value="very good">
             Very Good
           </label>
           <div class="radio">
             <label>
-              <input type="radio" name="optionsRadios" id="fair" value="fair">
+              <input type="radio" name="optionsRadios[]" id="fair" value="fair">
               Fair
             </label>
             <div class="radio">
               <label>
-                <input type="radio" name="optionsRadios" id="poor" value="poor">
+                <input type="radio" name="optionsRadios[]" id="poor" value="poor">
                 Poor
               </label>
         </div>
@@ -186,13 +186,21 @@
 <div class="form-group">
   <label class="col-lg-2 control-label">Price Range</label>
   <div class="col-lg-10">
-    <select class="form-control" id="priceRange">
+    <select class="form-control" name="priceRange">
       <option value="" selected disabled>Select Price Range</option>
         <option>Less than $50</option>
         <option>$50 - $100 </option>
         <option>$100-$200</option>
         <option>$200+</option>
       </select>
+</div>
+</div>
+
+<div class="form-group">
+  <label class="col-lg-2 control-label">Comments about Book</label>
+  <div class="col-lg-10">
+  <label for="comment"></label>
+  <textarea class="form-control" rows="5" name="comments"></textarea>
 </div>
 </div>
 
@@ -205,23 +213,30 @@
     <div class="form-group">
       <label for="nameF" class="col-lg-2 control-label">First Name</label>
       <div class="col-lg-10">
-        <input type="text" class="form-control" id="nameF" placeholder="First Name">
+        <input type="text" class="form-control" name="nameF" placeholder="First Name">
       </div>
     </div>
 
     <div class="form-group">
       <label for="nameL" class="col-lg-2 control-label">Last Name</label>
       <div class="col-lg-10">
-        <input type="text" class="form-control" id="nameL" placeholder="Last Name">
+        <input type="text" class="form-control" name="nameL" placeholder="Last Name">
       </div>
     </div>
 
         <div class="form-group">
           <label for="inputEmail" class="col-lg-2 control-label">Email</label>
           <div class="col-lg-10">
-            <input type="text" class="form-control" id="inputEmail" placeholder="Email">
+            <input type="email" class="form-control" name="email" placeholder="Email">
           </div>
         </div>
+
+        <div class="form-group">
+          <label for="password" class="col-lg-2 control-label">Password</label>
+          <div class="col-lg-10">
+            <input type="password" class="form-control" name="password" placeholder="Password" />
+        </div>
+    </div>
 
 <br>
 
@@ -249,5 +264,118 @@
       <script src="js/raphael-min.js"></script>
       <script src="js/morris.min.js"></script>
 
+      <script>
+
+      $(document).ready(function() {
+
+  $('#test').formValidation({
+      framework: 'bootstrap',
+      icon: {
+          valid: 'glyphicon glyphicon-ok',
+          invalid: 'glyphicon glyphicon-remove',
+          validating: 'glyphicon glyphicon-refresh'
+      },
+      fields: {
+          title: {
+              validators: {
+                  notEmpty: {
+                      message: 'The Title of the Book is required'
+                  },
+              }
+          },
+          author: {
+              validators: {
+                  notEmpty: {
+                      message: 'The Author of the Book is required'
+                  },
+              }
+          },
+          'checkbox[]': {
+              validators: {
+                  notEmpty: {
+                      message: 'Atleast one Faculty must be specified'
+                  }
+              }
+          },
+
+          'optionsRadios[]': {
+              validators: {
+                  notEmpty: {
+                      message: 'The Condition of the book must be specified'
+                  }
+              }
+          },
+
+          priceRange: {
+              validators: {
+                  notEmpty: {
+                      message: 'The price range must be specified'
+                  },
+              }
+          },
+
+          comments: {
+                  validators: {
+                      notEmpty: {
+                          message: 'Comments must be provided'
+                      },
+                      stringLength: {
+                          min: 6,
+                          max: 30,
+                          message: 'Comment is too short'
+                      },
+                  }
+              },
+
+              nameF: {
+                validators: {
+                    notEmpty: {
+                        message: 'Contact name is required'
+                    },
+
+                    regexp: {
+                        regexp: /^[a-zA-Z0]+$/,
+                        message: 'Illegal Name'
+                    }
+                }
+            },
+
+            nameL: {
+              validators: {
+                  notEmpty: {
+                      message: 'Contact name is required'
+                  },
+
+                  regexp: {
+                      regexp: /^[a-zA-Z0]+$/,
+                      message: 'Illegal Name'
+                  }
+              }
+          },
+
+          email: {
+                validators: {
+                    notEmpty: {
+                        message: 'The email address is required'
+                    },
+                    emailAddress: {
+                        message: 'The input is not a valid email address'
+                    }
+                }
+            },
+            password: {
+                validators: {
+                    notEmpty: {
+                        message: 'The password is required'
+                    },
+                }
+            },
+      }
+  });
+});
+
+  </script>
+
     </body>
+
   </html>

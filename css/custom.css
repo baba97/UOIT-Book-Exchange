@@ -1,18 +1,20 @@
-h3
-{
-  padding:15px;
-}
+h3 {padding:15px;}
 
-p
-{
-  word-wrap: break-word;
-}
+p {word-wrap: break-word;}
 
 
-.section2
-{
-  clear: left;
-}
+.section2 {clear: left;}
+
+.top-buffer { margin-top:150px; }
+
+#aboutTop {text-align: center;}
+#usage {text-align: center;}
+#aboutBot {text-align: center;}
+
+#shivDonut{margin-bottom: 150px;}
+#sosoDonut{margin-bottom: 150px;}
+#ashanDonut{margin-bottom: 150px;}
+#usagePlot{margin-bottom: 100px;}
 
 #recent
 {
@@ -55,18 +57,19 @@ p
 .listPromo
 {
   float: right;
-  /*width: 30%;*/
+  width: 40%;
 }
 
 .listPromo li
 {
   padding: 10px;
+  text-align: center;
 }
 
 .list
 {
-  position: relative;
-  left: -20%;
+  margin: auto;
+  position: absolute;
 }
 
 
