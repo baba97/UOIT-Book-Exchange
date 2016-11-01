@@ -30,7 +30,7 @@
   <body>
 
 
-        <nav class="navbar navbar-default">
+        <nav class="navbar navbar-fixed-top" style="background-color:white;">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
@@ -39,12 +39,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html">UOIT</a>
+          <a class="navbar-brand" style="color:#2e6da4;" href="index.php#Home">UOIT</a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
           <ul class="nav navbar-nav">
-            <li><a href="index.html#Home">Home<span class="sr-only">(current)</span></a></li>
+            <li><a href="index.php#Home">Home<span class="sr-only">(current)</span></a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"
               role="button" aria-expanded="false">Faculty<span class="caret"></span></a>
@@ -69,8 +69,8 @@
           </form>
 
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="addBook.html">Add a Book</a></li>
-            <li class="active"><a href="about.html">About Us</a></li>
+            <li><a href="addBook.php">Add a Book</a></li>
+            <li class="active"><a href="about.php">About Us</a></li>
           </ul>
         </div>
       </div>
@@ -78,12 +78,12 @@
 
 
     <!-- YOUR CONTENT HERE -->
-<div class="sectionAbout" style="float:left;width:100%;">
+<div class="sectionAbout" style="float:left;width:100%;padding-top:30px;">
   <div class=page-header>
   <h3>About Us</h3>
   </div>
 
-                  <div class="row" id="aboutTop">
+                  <div class="row" id="aboutTop" style="margin:auto;">
                   <div class="col-md-6">
                     <div id="shivDonut" style="height:250px;">
                       <h4 style="text-align:center;">Shiv Yoganathan</h4>
@@ -106,7 +106,7 @@
               </div>
 
 
-              <div class="row top-buffer" id="aboutBot">
+              <div class="row top-buffer" id="aboutBot" style="margin:auto;">
               <div class="col-md-6">
                     <div id="sosoDonut" style="height:250px;">
                       <h4 style="text-align:center;">Musadiq Soso</h4>
@@ -130,7 +130,7 @@
                 <h3>Website Usage</h3>
                 </div>
 
-                <div class="row" id="usage">
+                <div class="row" id="usage" style="margin:auto;">
                 <div class="col-md-12">
                   <div id="usagePlot"></div>
                   <div>

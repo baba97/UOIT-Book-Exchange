@@ -5,7 +5,12 @@ p {word-wrap: break-word;}
 
 .section2 {clear: left;}
 
-.top-buffer { margin-top:150px; }
+.navbar-header .navbar-toggle .icon-bar
+{
+  background-color:#2e6da4;
+}
+
+.top-buffer { padding-top:150px; }
 
 #aboutTop {text-align: center;}
 #usage {text-align: center;}
@@ -15,6 +20,15 @@ p {word-wrap: break-word;}
 #sosoDonut{margin-bottom: 150px;}
 #ashanDonut{margin-bottom: 150px;}
 #usagePlot{margin-bottom: 100px;}
+
+@@media only screen and (max-width:900) {
+  #shivDonut{float: left;}
+  #sosoDonut{float: left;}
+  #aliDonut{float: left;}
+  #ashanDonut{float: left;}
+  #aboutTop{float: left;}
+  #aboutBot{float: left;}
+}
 
 #recent
 {

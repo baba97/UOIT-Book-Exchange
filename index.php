@@ -29,16 +29,16 @@
   <body>
     <!-- YOUR CONTENT HERE -->
 
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-fixed-top" style="background-color:white;">
   <div class="container-fluid">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#Home">UOIT</a>
+      <a class="navbar-brand" style="color:#2e6da4;" href="index.php#Home">UOIT</a>
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
@@ -68,15 +68,15 @@
       </form>
 
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="addBook.html">Add a Book</a></li>
-        <li><a href="about.html">About Us</a></li>
+        <li><a href="addBook.php">Add a Book</a></li>
+        <li><a href="about.php">About Us</a></li>
       </ul>
     </div>
   </div>
 </nav>
 
 
-<div class="Home">
+<div class="Home" style="padding-top:30px;">
 
   <div class=page-header>
   <h3>Welcome</h3>
@@ -98,7 +98,7 @@
         books you wish to sell to other students. You can fill out the form to
          add a book <strong><a href="addBook.html">here</a></strong>.
          To upload information about your book you will need <em>atleast</em>
-         the Title of the Book, the Price Range and your contact information.</p>
+         the Title, Author, Condition, Faculties it belongs to, Price Range, Comments and Contact Info.</p>
        </div>
   </div>
 </div>
@@ -114,7 +114,7 @@
 <div class="col-lg-12">
   <div class="row">
 
-  <div class="col-md-3">
+  <div class="col-md-3" style="padding-bottom:10px;">
     <div class="panel panel-default" id="recent">
   <div class="panel-heading"><p class="text-center">Name of Book</p></div>
   <div class="panel-body">
@@ -123,7 +123,7 @@
 </div>
   </div>
 
-  <div class="col-md-3">
+  <div class="col-md-3"style="padding-bottom:10px;">
     <div class="panel panel-default" id="recent">
   <div class="panel-heading"><p class="text-center">Name of Book</p></div>
   <div class="panel-body">
@@ -132,7 +132,7 @@
 </div>
   </div>
 
-  <div class="col-md-3">
+  <div class="col-md-3"style="padding-bottom:10px;">
     <div class="panel panel-default" id="recent">
   <div class="panel-heading"><p class="text-center">Name of Book</p></div>
   <div class="panel-body">
@@ -141,7 +141,7 @@
 </div>
   </div>
 
-  <div class="col-md-3">
+  <div class="col-md-3"style="padding-bottom:10px;">
     <div class="panel panel-default" id="recent">
   <div class="panel-heading"><p class="text-center">Name of Book</p></div>
   <div class="panel-body">
@@ -169,8 +169,8 @@
   <div class="col-xs-6">
     <div class="listPromo">
     <ol type="a">
-      <li><span class="list">Title</span></li>
-      <li><span class="list">Picture</span></li>
+      <li><span class="list">Title/Author</span></li>
+      <li><span class="list">Comments</span></li>
       <li><span class="list">Contact Info</span></li>
       <li><span class="list">Price Range</span></li>
       <li><span class="list">Faculties</span></li>
@@ -188,7 +188,7 @@
 <h3>Section 4 Heading</h3>
 </div>
 
-  <div class="row">
+  <div class="row" style="margin:auto;">
 
     <div class="col-md-6">Video</div>
     <div class="col-md-6">Text</div>

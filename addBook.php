@@ -29,7 +29,7 @@
   <body>
 
 
-        <nav class="navbar navbar-default">
+        <nav class="navbar navbar-fixed-top" style="background-color:white;">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
@@ -38,12 +38,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html">UOIT</a>
+          <a class="navbar-brand" style="color:#2e6da4;" href="index.php#Home">UOIT</a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
           <ul class="nav navbar-nav">
-            <li><a href="index.html#Home">Home<span class="sr-only">(current)</span></a></li>
+            <li><a href="index.php#Home">Home<span class="sr-only">(current)</span></a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"
               role="button" aria-expanded="false">Faculty<span class="caret"></span></a>
@@ -68,8 +68,8 @@
           </form>
 
           <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="addBook.html">Add a Book</a></li>
-            <li><a href="about.html">About Us</a></li>
+            <li class="active"><a href="addBook.php">Add a Book</a></li>
+            <li><a href="about.php">About Us</a></li>
           </ul>
         </div>
       </div>
@@ -77,13 +77,13 @@
 
 
     <!-- YOUR CONTENT HERE -->
-<div class="section3" style="float:left;width:100%;">
+<div class="section3" style="float:left;width:100%;padding-top:30px;">
   <div class=page-header>
   <h3>Add Book</h3>
   </div>
 
   <div id="form">
-    <form id="test" class="form-horizontal">
+    <form id="test" class="form-horizontal" method="post" action="addBook.php">
   <fieldset>
 
     <div class=page-header>
@@ -110,43 +110,43 @@
 
         <div class="checkbox">
           <label>
-            <input type="checkbox" name="checkbox[]"> Buisness & IT
+            <input type="checkbox" name="FBIT" value="Buisness & IT"> Buisness & IT
           </label>
         </div>
 
         <div class="checkbox">
           <label>
-            <input type="checkbox" name="checkbox[]"> Education
+            <input type="checkbox" name="FE" value="Education"> Education
           </label>
         </div>
 
         <div class="checkbox">
           <label>
-            <input type="checkbox" name="checkbox[]"> Engineering
+            <input type="checkbox" name="FEAS" value="Engineering"> Engineering
           </label>
         </div>
 
         <div class="checkbox">
           <label>
-            <input type="checkbox" name="checkbox[]"> Nuclear and Energy
+            <input type="checkbox" name="FESNS" value="Nuclear and Energy"> Nuclear and Energy
           </label>
         </div>
 
         <div class="checkbox">
           <label>
-            <input type="checkbox" name="checkbox[]"> Health Science
+            <input type="checkbox" name="FHS" value="Health Science"> Health Science
           </label>
         </div>
 
         <div class="checkbox">
           <label>
-            <input type="checkbox" name="checkbox[]"> Science
+            <input type="checkbox" name="FS" value="Science"> Science
           </label>
         </div>
 
         <div class="checkbox">
           <label>
-            <input type="checkbox" name="checkbox[]"> Social Science
+            <input type="checkbox" name="FSSH" value="Social Science"> Social Science
           </label>
         </div>
 
@@ -158,23 +158,23 @@
       <div class="col-lg-10">
         <div class="radio">
           <label>
-            <input type="radio" name="optionsRadios[]" id="mint" value="mint">
+            <input type="radio" name="optionsRadios" id="mint" value="Mint">
             Mint
           </label>
         </div>
         <div class="radio">
           <label>
-            <input type="radio" name="optionsRadios[]" id="vgood" value="very good">
+            <input type="radio" name="optionsRadios" id="vgood" value="Very Good">
             Very Good
           </label>
           <div class="radio">
             <label>
-              <input type="radio" name="optionsRadios[]" id="fair" value="fair">
+              <input type="radio" name="optionsRadios" id="fair" value="Fair">
               Fair
             </label>
             <div class="radio">
               <label>
-                <input type="radio" name="optionsRadios[]" id="poor" value="poor">
+                <input type="radio" name="optionsRadios" id="poor" value="Poor">
                 Poor
               </label>
         </div>
@@ -188,10 +188,10 @@
   <div class="col-lg-10">
     <select class="form-control" name="priceRange">
       <option value="" selected disabled>Select Price Range</option>
-        <option>Less than $50</option>
-        <option>$50 - $100 </option>
-        <option>$100-$200</option>
-        <option>$200+</option>
+        <option value="Less than $50">Less than $50</option>
+        <option value="$50 - $100">$50 - $100 </option>
+        <option value="$100 -$200">$100-$200</option>
+        <option value="$200+">$200+</option>
       </select>
 </div>
 </div>
@@ -203,6 +203,15 @@
   <textarea class="form-control" rows="5" name="comments"></textarea>
 </div>
 </div>
+
+<!-- <div class="form-group">
+  <label class="col-lg-2 control-label">Picture of the Book</label>
+  <div class="col-lg-10">
+  <label for="pics"></label>
+  <input type="file" name="fileToUpload" id="bookPic">
+</div>
+</div> -->
+
 
 <br>
 
@@ -290,7 +299,7 @@
                   },
               }
           },
-          'checkbox[]': {
+          'checkbox': {
               validators: {
                   notEmpty: {
                       message: 'Atleast one Faculty must be specified'
@@ -298,7 +307,7 @@
               }
           },
 
-          'optionsRadios[]': {
+          'optionsRadios': {
               validators: {
                   notEmpty: {
                       message: 'The Condition of the book must be specified'
@@ -320,9 +329,9 @@
                           message: 'Comments must be provided'
                       },
                       stringLength: {
-                          min: 6,
-                          max: 30,
-                          message: 'Comment is too short'
+                          min: 15,
+                          max: 60,
+                          message: 'Comment is too short/long'
                       },
                   }
               },
@@ -379,3 +388,48 @@
     </body>
 
   </html>
+
+  <?php
+  $db = new mysqli('localhost', 'root', '', 'lab');
+
+  // TODO You must process the POST data from the form and then set the variables
+  // below to be inserted in the database
+
+  // You should see sucess if you can connect
+  if($db->connect_errno > 0){
+      echo "ERROR";
+      die('Unable to connect to database [' . $db->connect_error . ']');
+  }
+  else {
+      echo "";
+  }
+
+  // Insert sample data into the database
+  $sql = $db->prepare("INSERT INTO library(title, author, conditions, priceRange, " .
+                      "comments, nameF, nameL, email) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+
+  // Bind the parameters to the SQL query above, s is a string i is an integer
+  $sql->bind_param("ssssssss", $_POST['title'], $_POST['author'],
+  $_POST['optionsRadios'], $_POST['priceRange'], $_POST['comments'], $_POST['nameF'], $_POST['nameL'], $_POST['email']);
+  // Execute the query, inserting the data
+  $sql->execute();
+
+  $sql = $db->prepare("INSERT INTO faculties(FBIT, FE, FEAS, FESNS, " .
+                      "FHS, FS, FSSH) VALUES (?, ?, ?, ?, ?, ?, ?)");
+
+  $FBIT = isset($_POST['FBIT'])?true:false;
+  $FE = isset($_POST['FE'])?true:false;
+  $FEAS = isset($_POST['FEAS'])?true:false;
+  $FESNS = isset($_POST['FESNS'])?true:false;
+  $FHS = isset($_POST['FHS'])?true:false;
+  $FS = isset($_POST['FS'])?true:false;
+  $FSSH = isset($_POST['FSSH'])?true:false;
+
+  $sql->bind_param("iiiiiii", $FBIT, $FE, $FEAS, $FESNS, $FHS, $FS, $FSSH);
+  $sql->execute();
+
+  // Close the connection
+  $sql->close();
+  $db->close();
+
+  ?>
