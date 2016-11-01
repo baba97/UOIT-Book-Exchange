@@ -131,7 +131,7 @@
                 </div>
 
                 <div class="row" id="usage" style="margin:auto;">
-                <div class="col-md-12">
+                <div class="col-md-2 col-md-offset-3">
                   <div id="usagePlot"></div>
                   <div>
                     <h4 style="text-align:center;">Website Visiters</h4>

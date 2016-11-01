@@ -43,7 +43,7 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home<span class="sr-only">(current)</span></a></li>
+        <li><a href="#">Home<span class="sr-only">(current)</span></a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"
           role="button" aria-expanded="false">Faculty<span class="caret"></span></a>
@@ -75,141 +75,6 @@
   </div>
 </nav>
 
-
-<div class="Home" style="padding-top:30px;">
-
-  <div class=page-header>
-  <h3>Welcome</h3>
-  </div>
-
-<div class="Welcome">
-  <div class="row">
-
-  <div class="col-xs-6">
-    <div class="imageWelcome">
-      <img src="images/books1.jpeg" id="image1"></img>
-    </div>
-  </div>
-
-  <div class="col-xs-6">
-    <div class="textWelcome">
-      <h4>UOIT's Used Book Exchange</h4>
-      <p>This website will allow you to upload information about
-        books you wish to sell to other students. You can fill out the form to
-         add a book <strong><a href="addBook.html">here</a></strong>.
-         To upload information about your book you will need <em>atleast</em>
-         the Title, Author, Condition, Faculties it belongs to, Price Range, Comments and Contact Info.</p>
-       </div>
-  </div>
-</div>
-</div>
-
-
-<div class="section2" style="float:left;">
-<div class=page-header>
-<h3>Recent Uploads</h3>
-</div>
-
-<div class="row show-grid" id="recentRow">
-<div class="col-lg-12">
-  <div class="row">
-
-  <div class="col-md-3" style="padding-bottom:10px;">
-    <div class="panel panel-default" id="recent">
-  <div class="panel-heading"><p class="text-center">Name of Book</p></div>
-  <div class="panel-body">
-      <img id="recentP" src="images/books1.jpeg" class="img-responsive center-block"></img>
-  </div>
-</div>
-  </div>
-
-  <div class="col-md-3"style="padding-bottom:10px;">
-    <div class="panel panel-default" id="recent">
-  <div class="panel-heading"><p class="text-center">Name of Book</p></div>
-  <div class="panel-body">
-    <img id="recentP" src="images/books1.jpeg" class="img-responsive center-block"></img>
-  </div>
-</div>
-  </div>
-
-  <div class="col-md-3"style="padding-bottom:10px;">
-    <div class="panel panel-default" id="recent">
-  <div class="panel-heading"><p class="text-center">Name of Book</p></div>
-  <div class="panel-body">
-    <img id="recentP" src="images/books1.jpeg" class="img-responsive center-block"></img>
-  </div>
-</div>
-  </div>
-
-  <div class="col-md-3"style="padding-bottom:10px;">
-    <div class="panel panel-default" id="recent">
-  <div class="panel-heading"><p class="text-center">Name of Book</p></div>
-  <div class="panel-body">
-    <img id="recentP" src="images/books1.jpeg" class="img-responsive center-block"></img>
-  </div>
-</div>
-  </div>
-</div>
-</div>
-
-</div>
-<div class="Promo">
-
-  <div class="row">
-  <div class="col-xs-6">
-    <div class="textPromo">
-      <h4>Want your book to show here?</h4>
-        <p>Make use of our <strong>Recent Upload</strong> section.
-          This section displays the latest books uploaded to the website.
-          To ensure your books shows up here as well, make sure to follow the checklist
-          when uploading your books!</p>
-    </div>
-  </div>
-
-  <div class="col-xs-6">
-    <div class="listPromo">
-    <ol type="a">
-      <li><span class="list">Title/Author</span></li>
-      <li><span class="list">Comments</span></li>
-      <li><span class="list">Contact Info</span></li>
-      <li><span class="list">Price Range</span></li>
-      <li><span class="list">Faculties</span></li>
-    </ol>
-    </div>
-  </div>
-
-</div>
-
-</div>
-</div>
-
-<div class="section4">
-<div class=page-header>
-<h3>Section 4 Heading</h3>
-</div>
-
-  <div class="row" style="margin:auto;">
-
-    <div class="col-md-6">Video</div>
-    <div class="col-md-6">Text</div>
-
-    <div class="col-md-6"></div>
-    <div class="col-md-6">Unordered List</div>
-
-  </div>
-
-</div>
-
-
-<div class="section5">
-<div class=page-header>
-<h3>Books</h3>
-<button style="float:right;"
-class="btn btn-primary" onclick="location.href='addBook.php';"> Add Yours! </button>
-</div>
-</div>
-
-
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="js/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -218,8 +83,7 @@ class="btn btn-primary" onclick="location.href='addBook.php';"> Add Yours! </but
     <script src="js/framework/bootstrap.min.js"></script>
     <script src="js/raphael-min.js"></script>
     <script src="js/morris.min.js"></script>
-
-  </body>
+</body>
 </html>
 
 <?php

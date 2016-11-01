@@ -331,8 +331,7 @@
                       },
                       stringLength: {
                           min: 15,
-                          max: 60,
-                          message: 'Comment is too short/long'
+                          message: 'Comment is too short'
                       },
                   }
               },
