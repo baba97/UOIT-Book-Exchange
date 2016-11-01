@@ -404,19 +404,16 @@
       echo "";
   }
 
-  // Insert sample data into the database
+//BOOK INFO
   $sql = $db->prepare("INSERT INTO library(title, author, conditions, priceRange, " .
-                      "comments, nameF, nameL, email) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-
-  // Bind the parameters to the SQL query above, s is a string i is an integer
-  $sql->bind_param("ssssssss", $_POST['title'], $_POST['author'],
-  $_POST['optionsRadios'], $_POST['priceRange'], $_POST['comments'], $_POST['nameF'], $_POST['nameL'], $_POST['email']);
-  // Execute the query, inserting the data
+                      "comments) VALUES (?, ?, ?, ?, ?)");
+  $sql->bind_param("sssss", $_POST['title'], $_POST['author'],
+  $_POST['optionsRadios'], $_POST['priceRange'], $_POST['comments']);
   $sql->execute();
 
+//FACULTY INFO
   $sql = $db->prepare("INSERT INTO faculties(FBIT, FE, FEAS, FESNS, " .
                       "FHS, FS, FSSH) VALUES (?, ?, ?, ?, ?, ?, ?)");
-
   $FBIT = isset($_POST['FBIT'])?true:false;
   $FE = isset($_POST['FE'])?true:false;
   $FEAS = isset($_POST['FEAS'])?true:false;
@@ -424,8 +421,13 @@
   $FHS = isset($_POST['FHS'])?true:false;
   $FS = isset($_POST['FS'])?true:false;
   $FSSH = isset($_POST['FSSH'])?true:false;
-
   $sql->bind_param("iiiiiii", $FBIT, $FE, $FEAS, $FESNS, $FHS, $FS, $FSSH);
+  $sql->execute();
+
+//CONTACT INFO
+  $sql = $db->prepare("INSERT INTO contact(nameF, nameL, email) " .
+                      "VALUES (?, ?, ?)");
+  $sql->bind_param("sss", $_POST['nameF'], $_POST['nameL'], $_POST['email']);
   $sql->execute();
 
   // Close the connection
