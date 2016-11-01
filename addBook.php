@@ -83,7 +83,7 @@
   </div>
 
   <div id="form">
-    <form id="test" class="form-horizontal" method="post" action="addBook.php">
+    <form id="test" class="form-horizontal" method="post" action="addBook.php" enctype="multipart/form-data">
   <fieldset>
 
     <div class=page-header>
@@ -204,13 +204,14 @@
 </div>
 </div>
 
-<!-- <div class="form-group">
+<div class="form-group">
   <label class="col-lg-2 control-label">Picture of the Book</label>
   <div class="col-lg-10">
   <label for="pics"></label>
-  <input type="file" name="fileToUpload" id="bookPic">
+  <input type="hidden" name="MAX_FILE_SIZE" value="2000000">
+  <input type="file" name="bookPic">
 </div>
-</div> -->
+</div>
 
 
 <br>
@@ -404,12 +405,16 @@
       echo "";
   }
 
+
 //BOOK INFO
   $sql = $db->prepare("INSERT INTO library(title, author, conditions, priceRange, " .
                       "comments) VALUES (?, ?, ?, ?, ?)");
+
   $sql->bind_param("sssss", $_POST['title'], $_POST['author'],
   $_POST['optionsRadios'], $_POST['priceRange'], $_POST['comments']);
   $sql->execute();
+
+
 
 //FACULTY INFO
   $sql = $db->prepare("INSERT INTO faculties(FBIT, FE, FEAS, FESNS, " .
