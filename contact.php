@@ -38,12 +38,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" style="color:#2e6da4;" href="index.php#Home">UOIT</a>
+      <a class="navbar-brand" style="color:#2e6da4;" href="index.php">UOIT</a>
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
       <ul class="nav navbar-nav">
-        <li><a href="#">Home<span class="sr-only">(current)</span></a></li>
+        <li><a href="index.php#Home">Home<span class="sr-only">(current)</span></a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"
           role="button" aria-expanded="false">Faculty<span class="caret"></span></a>
@@ -75,6 +75,8 @@
   </div>
 </nav>
 
+<div class="Home" style="padding-top:30px;">
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="js/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -87,41 +89,102 @@
 </html>
 
 <?php
-$db = new mysqli('localhost', 'root', '', 'lab');
 
-// You should see sucess if you can connect
-if($db->connect_errno > 0){
-    echo "ERROR";
-    die('Unable to connect to database [' . $db->connect_error . ']');
+if(!isset($_POST['view'])) {
+    echo " No valid Post ";
 }
-else {
-    echo "" . '<br />';
-}
+ else
+{
 
-// Query to return data from your database
-$result = $db->query("SELECT * FROM library");
+if (isset($_POST['view']))
+{
+   $book_id = $_POST['view'];
 
-// check if the query succeeded
-if (!$result) {
-    die('There was an error running the query[' . $db->error . ']');
-}
+   $db = new mysqli('localhost', 'root', '', 'lab');
 
-echo "<table class=table table-striped table-hover>
-<thead><tr><th>Title</th><th>Author(s)</th><th>Price Range</th><th>Contact</th>
-</tr></thread>"; // start a table tag in the HTML
+   // You should see sucess if you can connect
+   if($db->connect_errno > 0){
+       echo "ERROR";
+       die('Unable to connect to database [' . $db->connect_error . ']');
+   }
+   else {
+       echo "" . '<br />';
+   }
 
-while($row = $result->fetch_assoc()) {   //Creates a loop to loop through results
-echo "<tr><td>" . $row['title'] . "</td><td>" . $row['author'] .
-"</td><td>" . $row['priceRange'] . "</td>
-<td><button class=btn btn-primary onclick=location.href='contact.php';
->View</button></td></tr>";  //$row['index'] the index here is a field name
-}
-
-echo "</table>"; //Close the table in HTML
+   // Query to return data from your database
+   $result = $db->query("SELECT * FROM library WHERE book_id=".$book_id);
 
 
-// Close the database connection
-$result->free();
-$db->close();
+   // check if the query succeeded
+   if (!$result) {
+       die('There was an error running the query[' . $db->error . ']');
+   }
 
-?>
+  $row = $result->fetch_assoc();
+
+  //Applicable Faculties
+      $facult="";
+      if($row['FBIT']==1){$facult.="Buisness and IT, ";}
+      if($row['FE']==1){$facult.="Education, ";}
+      if($row['FEAS']==1){$facult.="Engineering, ";}
+      if($row['FESNS']==1){$facult.="Nuclear and Energy, ";}
+      if($row['FHS']==1){$facult.="Health Science, ";}
+      if($row['FS']==1){$facult.="Science, ";}
+      if($row['FSSH']==1){$facult.="Social Science, ";}
+
+echo "
+<ul class='nav nav-tabs' style='padding:15px;'>
+  <li class='active'> <a href='#home' data-toggle='tab' aria-expanded='true'>Book Info</a></li>
+  <li class=''>       <a href='#profile' data-toggle='tab' aria-expanded='false'>Contact Info</a></li>
+</ul>
+
+  <div id='myTabContent' class='tab-content'>
+
+  <div class='tab-pane fade active in' id='home'>
+  <div class='list-group'>
+    <a href='#' class='list-group-item active'>
+    Title: ". $row['title']." <br>
+    Author: " .$row['author']. "
+    </a>
+
+    <a href='#' class='list-group-item'>
+    Faculties: ".$facult."
+    </a>
+
+    <a href='#' class='list-group-item'>
+    Condition: ".$row['conditions']."
+    </a>
+
+    <a href='#' class='list-group-item'>
+    Price Range: ".$row['priceRange']."
+    </a>
+
+    <a href='#' class='list-group-item'>
+    Comments: ".$row['comments']."
+    </a>
+  </div>
+  </div>
+
+  <div class='tab-pane fade' id='profile'>
+  <div class='list-group'>
+
+    <a href='#' class='list-group-item active'>
+    Name: ". $row['nameF']." ".$row['nameL']. " <br>
+    </a>
+
+    <a href='#' class='list-group-item'>
+    Email: ".$row['email']."
+    </a>
+
+  </div>
+</div>
+
+</div>
+";
+
+   // Close the database connection
+   $result->free();
+   $db->close();
+
+
+}} ?>

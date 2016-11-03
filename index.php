@@ -12,11 +12,8 @@
     <link href="css/custom.css" rel="stylesheet">
     <link href="css/formValidation.min.css" rel="stylesheet">
     <link href="css/morris.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <style>
-        /* YOUR CSS HERE */
-    </style>
+    <!-- Scripts -->
+    <script src="js/customs.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -185,17 +182,30 @@
 
 <div class="section4">
 <div class=page-header>
-<h3>Section 4 Heading</h3>
+<h3>Sponsors</h3>
 </div>
 
   <div class="row" style="margin:auto;">
 
-    <div class="col-md-6">Video</div>
-    <div class="col-md-6">Text</div>
+    <div class="col-xs-6">
+      <iframe class="textPromo"width="500" height="315" src="https://www.youtube.com/embed/ueqbTJhmXH4" frameborder="0"
+      allowfullscreen></iframe>
+    </div>
+      <div class="listPromo">
+    <div class="col-xs-6">Do you want to be one of our sponsors?</div>
+  </div>
 
-    <div class="col-md-6"></div>
-    <div class="col-md-6">Unordered List</div>
-
+    <div class="col-xs-6"></div>
+    <div class="listPromo">
+    <div class="col-xs-6">
+      <ul>
+        <li><span class="list">Lorem ipsum dolor</span></li>
+        <li><span class="list">Lorem ipsum dolor</span></li>
+        <li><span class="list">Lorem ipsum dolor</span></li>
+        <li><span class="list">Lorem ipsum dolor</span></li>
+        <li><span class="list">Lorem ipsum dolor</span></li>
+      </ul></div>
+    </div>
   </div>
 
 </div>
@@ -204,9 +214,9 @@
 <div class="section5">
 <div class=page-header>
 <h3>Books</h3>
-<button style="float:right;"
-class="btn btn-primary" onclick="location.href='addBook.php';"> Add Yours! </button>
 </div>
+<button style="float:right;"
+class="btn btn-primary" onclick="location.href='addBook.php'"> Add  </button>
 </div>
 
 
@@ -236,25 +246,38 @@ else {
 
 // Query to return data from your database
 $result = $db->query("SELECT * FROM library");
+$result2 = $db->query("SELECT book_id FROM library");
 
-// check if the query succeeded
-if (!$result) {
+// check if the query succeeded/
+if (!$result || !$result2) {
     die('There was an error running the query[' . $db->error . ']');
 }
 
-echo "<table class=table table-striped table-hover>
+echo "<table class=table table-striped table-hover >
 <thead><tr><th>Title</th><th>Author(s)</th><th>Price Range</th><th>Contact</th>
 </tr></thread>"; // start a table tag in the HTML
 
-while($row = $result->fetch_assoc()) {   //Creates a loop to loop through results
-echo "<tr><td>" . $row['title'] . "</td><td>" . $row['author'] .
-"</td><td>" . $row['priceRange'] . "</td>
-<td><button class=btn btn-primary onclick=location.href='contact.php';
->View</button></td></tr>";  //$row['index'] the index here is a field name
+  $counter=0;
+  $array[] = $result2->fetch_assoc();
+  $array = array_values($array);
+
+while($row = $result->fetch_assoc()) {
+   //Creates a loop to loop through results
+echo "<tr>
+<td>" . $row['title'] . "</td>
+<td>" . $row['author'] ."</td>
+<td>" . $row['priceRange'] . "</td>
+<td>
+<form id='viewForm' method='post' action='contact.php'>
+<input type='hidden' name='view' value=".$array[$counter]['book_id']."> </input>
+<input type='submit' name='submit' value='View' class='btn btn-default'>  </input>
+</form>
+</td>
+</tr>";  //$row['index'] the index here is a field name
+  // print_r (array_values($array)[$counter]);
+    $counter++;
 }
-
 echo "</table>"; //Close the table in HTML
-
 
 // Close the database connection
 $result->free();
