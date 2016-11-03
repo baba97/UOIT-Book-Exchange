@@ -12,8 +12,6 @@
     <link href="css/custom.css" rel="stylesheet">
     <link href="css/formValidation.min.css" rel="stylesheet">
     <link href="css/morris.css" rel="stylesheet">
-    <!-- Scripts -->
-    <script src="js/customs.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -45,13 +43,13 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"
           role="button" aria-expanded="false">Faculty<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Buisness & IT</a></li>
-            <li><a href="#">Education</a></li>
-            <li><a href="#">Engineering</a></li>
-            <li><a href="#">Nuclear & Energy</a></li>
-            <li><a href="#">Health Science</a></li>
-            <li><a href="#">Science</a></li>
-            <li><a href="#">Social Science</a></li>
+            <li><a href="fbit.php">Buisness & IT</a></li>
+            <li><a href="fe.php">Education</a></li>
+            <li><a href="feas.php">Engineering</a></li>
+            <li><a href="fesns.php">Nuclear & Energy</a></li>
+            <li><a href="fhs.php">Health Science</a></li>
+            <li><a href="fs.php">Science</a></li>
+            <li><a href="fssh.php">Social Science</a></li>
           </ul>
         </li>
       </ul>
@@ -246,10 +244,9 @@ else {
 
 // Query to return data from your database
 $result = $db->query("SELECT * FROM library");
-$result2 = $db->query("SELECT book_id FROM library");
 
 // check if the query succeeded/
-if (!$result || !$result2) {
+if (!$result) {
     die('There was an error running the query[' . $db->error . ']');
 }
 
@@ -257,9 +254,6 @@ echo "<table class=table table-striped table-hover >
 <thead><tr><th>Title</th><th>Author(s)</th><th>Price Range</th><th>Contact</th>
 </tr></thread>"; // start a table tag in the HTML
 
-  $counter=0;
-  $array[] = $result2->fetch_assoc();
-  $array = array_values($array);
 
 while($row = $result->fetch_assoc()) {
    //Creates a loop to loop through results
@@ -269,13 +263,12 @@ echo "<tr>
 <td>" . $row['priceRange'] . "</td>
 <td>
 <form id='viewForm' method='post' action='contact.php'>
-<input type='hidden' name='view' value=".$array[$counter]['book_id']."> </input>
+<input type='hidden' name='view' value=".$row['book_id']."> </input>
 <input type='submit' name='submit' value='View' class='btn btn-default'>  </input>
 </form>
 </td>
 </tr>";  //$row['index'] the index here is a field name
   // print_r (array_values($array)[$counter]);
-    $counter++;
 }
 echo "</table>"; //Close the table in HTML
 

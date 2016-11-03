@@ -13,11 +13,6 @@
     <link href="css/formValidation.min.css" rel="stylesheet">
     <link href="css/morris.css" rel="stylesheet">
 
-    <!-- Custom CSS -->
-    <style>
-        /* YOUR CSS HERE */
-    </style>
-
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -38,12 +33,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" style="color:#2e6da4;" href="index.php">UOIT</a>
+      <a class="navbar-brand" style="color:#2e6da4;" href="index.php#Home">UOIT</a>
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
       <ul class="nav navbar-nav">
-        <li><a href="index.php#Home">Home<span class="sr-only">(current)</span></a></li>
+          <li><a href="index.php#Home">Home<span class="sr-only">(current)</span></a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"
           role="button" aria-expanded="false">Faculty<span class="caret"></span></a>
@@ -54,7 +49,7 @@
             <li><a href="fesns.php">Nuclear & Energy</a></li>
             <li><a href="fhs.php">Health Science</a></li>
             <li><a href="fs.php">Science</a></li>
-            <li><a href="fssh.php">Social Science</a></li>
+            <li class="active"><a href="fssh.php">Social Science</a></li>
           </ul>
         </li>
       </ul>
@@ -75,7 +70,14 @@
   </div>
 </nav>
 
-<div class="Home" style="padding-top:30px;">
+<div class="section5" style="padding-top: 30px;">
+<div class=page-header>
+<h3>Faculty of Social Sciences and Humanities</h3>
+</div>
+<button style="float:right;"
+class="btn btn-primary" onclick="location.href='addBook.php'"> Add  </button>
+</div>
+
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="js/jquery.min.js"></script>
@@ -85,106 +87,55 @@
     <script src="js/framework/bootstrap.min.js"></script>
     <script src="js/raphael-min.js"></script>
     <script src="js/morris.min.js"></script>
-</body>
+
+  </body>
 </html>
 
 <?php
+$db = new mysqli('localhost', 'root', '', 'lab');
 
-if(!isset($_POST['view'])) {
-    echo " No valid Post ";
+// You should see sucess if you can connect
+if($db->connect_errno > 0){
+    echo "ERROR";
+    die('Unable to connect to database [' . $db->connect_error . ']');
 }
- else
-{
+else {
+    echo "" . '<br />';
+}
 
-if (isset($_POST['view']))
-{
-   $book_id = $_POST['view'];
+// Query to return data from your database
+$result = $db->query("SELECT * FROM library");
 
-   $db = new mysqli('localhost', 'root', '', 'lab');
+// check if the query succeeded/
+if (!$result) {
+    die('There was an error running the query[' . $db->error . ']');
+}
 
-   // You should see sucess if you can connect
-   if($db->connect_errno > 0){
-       echo "ERROR";
-       die('Unable to connect to database [' . $db->connect_error . ']');
-   }
-   else {
-       echo "" . '<br />';
-   }
-
-   // Query to return data from your database
-   $result = $db->query("SELECT * FROM library WHERE book_id=".$book_id);
+echo "<table class=table table-striped table-hover >
+<thead><tr><th>Title</th><th>Author(s)</th><th>Price Range</th><th>Contact</th>
+</tr></thread>"; // start a table tag in the HTML
 
 
-   // check if the query succeeded
-   if (!$result) {
-       die('There was an error running the query[' . $db->error . ']');
-   }
+while($row = $result->fetch_assoc()) {
+   //Creates a loop to loop through results
+if($row['FSSH']==1){
+echo "<tr>
+<td>" . $row['title'] . "</td>
+<td>" . $row['author'] ."</td>
+<td>" . $row['priceRange'] . "</td>
+<td>
+<form id='viewForm' method='post' action='contact.php'>
+<input type='hidden' name='view' value=".$row['book_id']."> </input>
+<input type='submit' name='submit' value='View' class='btn btn-default'>  </input>
+</form>
+</td>
+</tr>";  //$row['index'] the index here is a field name
+  // print_r (array_values($array)[$counter]);
+}}
+echo "</table>"; //Close the table in HTML
 
-  $row = $result->fetch_assoc();
+// Close the database connection
+$result->free();
+$db->close();
 
-  //Applicable Faculties
-      $facult="";
-      if($row['FBIT']==1){$facult.="Buisness and IT, ";}
-      if($row['FE']==1){$facult.="Education, ";}
-      if($row['FEAS']==1){$facult.="Engineering, ";}
-      if($row['FESNS']==1){$facult.="Nuclear and Energy, ";}
-      if($row['FHS']==1){$facult.="Health Science, ";}
-      if($row['FS']==1){$facult.="Science, ";}
-      if($row['FSSH']==1){$facult.="Social Science, ";}
-
-echo "
-<ul class='nav nav-tabs' style='padding:15px;'>
-  <li class='active'> <a href='#home' data-toggle='tab' aria-expanded='true'>Book Info</a></li>
-  <li class=''>       <a href='#profile' data-toggle='tab' aria-expanded='false'>Contact Info</a></li>
-</ul>
-
-  <div id='myTabContent' class='tab-content'>
-
-  <div class='tab-pane fade active in' id='home'>
-  <div class='list-group'>
-    <a href='#' class='list-group-item active'>
-    <b>Title</b>: ". $row['title']." <br>
-    <b>Author</b>: " .$row['author']. "
-    </a>
-
-    <a href='#' class='list-group-item'>
-    <b>Faculties</b>: ".$facult."
-    </a>
-
-    <a href='#' class='list-group-item'>
-    <b>Condition</b>: ".$row['conditions']."
-    </a>
-
-    <a href='#' class='list-group-item'>
-    <b>Price Range</b>: ".$row['priceRange']."
-    </a>
-
-    <a href='#' class='list-group-item'>
-    <b>Comments</b>: ".$row['comments']."
-    </a>
-  </div>
-  </div>
-
-  <div class='tab-pane fade' id='profile'>
-  <div class='list-group'>
-
-    <a href='#' class='list-group-item active'>
-    <b>Name</b>: ". $row['nameF']." ".$row['nameL']. " <br>
-    </a>
-
-    <a href='#' class='list-group-item'>
-    <b>Email</b>: ".$row['email']."
-    </a>
-
-  </div>
-</div>
-
-</div>
-";
-
-   // Close the database connection
-   $result->free();
-   $db->close();
-
-
-}} ?>
+?>

@@ -48,13 +48,13 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"
               role="button" aria-expanded="false">Faculty<span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="#">Buisness & IT</a></li>
-                <li><a href="#">Education</a></li>
-                <li><a href="#">Engineering</a></li>
-                <li><a href="#">Nuclear & Energy</a></li>
-                <li><a href="#">Health Science</a></li>
-                <li><a href="#">Science</a></li>
-                <li><a href="#">Social Science</a></li>
+                <li><a href="fbit.php">Buisness & IT</a></li>
+                <li><a href="fe.php">Education</a></li>
+                <li><a href="feas.php">Engineering</a></li>
+                <li><a href="fesns.php">Nuclear & Energy</a></li>
+                <li><a href="fhs.php">Health Science</a></li>
+                <li><a href="fs.php">Science</a></li>
+                <li><a href="fssh.php">Social Science</a></li>
               </ul>
             </li>
           </ul>
