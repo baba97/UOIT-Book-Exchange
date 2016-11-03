@@ -38,7 +38,7 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
       <ul class="nav navbar-nav">
-          <li><a href="index.php#Home">Home<span class="sr-only">(current)</span></a></li>
+        <li><a href="index.php#Home">Home<span class="sr-only">(current)</span></a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"
           role="button" aria-expanded="false">Faculty<span class="caret"></span></a>
@@ -48,7 +48,7 @@
             <li><a href="feas.php">Engineering</a></li>
             <li><a href="fesns.php">Nuclear & Energy</a></li>
             <li><a href="fhs.php">Health Science</a></li>
-            <li  class="active"><a href="fs.php">Science</a></li>
+            <li><a href="fs.php">Science</a></li>
             <li><a href="fssh.php">Social Science</a></li>
           </ul>
         </li>
@@ -72,10 +72,8 @@
 
 <div class="section5" style="padding-top: 30px;">
 <div class=page-header>
-<h3>Faculty of Science</h3>
+<h3>Search Results</h3>
 </div>
-<button style="float:right;"
-class="btn btn-primary" onclick="location.href='addBook.php'"> Add  </button>
 </div>
 
 
@@ -104,7 +102,9 @@ else {
 }
 
 // Query to return data from your database
-$result = $db->query("SELECT * FROM library");
+$result = $db->query(
+"SELECT * FROM library where Concat(title, '', author, '', conditions, '', priceRange, '', comments, '', FBIT, '', FE, '', FEAS, '', FESNS, '', FHS, '', FS, '', FSSH, '', nameF, '', nameL, '', email) like '%".$_POST['searchBar']."%'"
+);
 
 // check if the query succeeded/
 if (!$result) {
@@ -118,7 +118,6 @@ echo "<table class=table table-striped table-hover >
 
 while($row = $result->fetch_assoc()) {
    //Creates a loop to loop through results
-if($row['FS']==1){
 echo "<tr>
 <td>" . $row['title'] . "</td>
 <td>" . $row['author'] ."</td>
@@ -131,7 +130,7 @@ echo "<tr>
 </td>
 </tr>";  //$row['index'] the index here is a field name
   // print_r (array_values($array)[$counter]);
-}}
+}
 echo "</table>"; //Close the table in HTML
 
 // Close the database connection
