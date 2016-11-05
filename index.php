@@ -11,7 +11,10 @@
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
     <link href="css/formValidation.min.css" rel="stylesheet">
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="css/morris.css" rel="stylesheet">
+    <link href="css/material-design-iconic-font" rel="stylesheet">
+    <link href="css/dataTables.bootstrap.min.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -38,7 +41,7 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home<span class="sr-only">(current)</span></a></li>
+        <li class="active"><a href="index.php#Home">Home<span class="sr-only">(current)</span></a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"
           role="button" aria-expanded="false">Faculty<span class="caret"></span></a>
@@ -213,8 +216,6 @@
 <div class=page-header>
 <h3>Books</h3>
 </div>
-<button style="float:right;"
-class="btn btn-primary" onclick="location.href='addBook.php'"> Add  </button>
 </div>
 
 
@@ -226,6 +227,13 @@ class="btn btn-primary" onclick="location.href='addBook.php'"> Add  </button>
     <script src="js/framework/bootstrap.min.js"></script>
     <script src="js/raphael-min.js"></script>
     <script src="js/morris.min.js"></script>
+    <script src="js/dataTables.bootstrap.min.js"></script>
+    <script src="js/jquery.dataTables.min.js"></script>
+    <script>
+    $(document).ready(function() {
+    $('#example').DataTable();
+} );
+</script>
 
   </body>
 </html>
@@ -250,14 +258,22 @@ if (!$result) {
     die('There was an error running the query[' . $db->error . ']');
 }
 
-echo "<table class=table table-striped table-hover >
-<thead><tr><th>Title</th><th>Author(s)</th><th>Price Range</th><th>Contact</th>
-</tr></thread>"; // start a table tag in the HTML
+echo "
+<table id='example' class='table table-striped table-hover table-responsive' cellspacing='0' width='100%'>
+<thead>
+<tr>
+<th>Title <i class='zmdi zmdi-swap-vertical'></i></th>
+<th>Author(s)</th>
+<th>Price Range</th>
+<th>Contact</th>
+</tr>
+</thead>"; // start a table tag in the HTML
 
 
 while($row = $result->fetch_assoc()) {
    //Creates a loop to loop through results
-echo "<tr>
+echo "
+<tr>
 <td>" . $row['title'] . "</td>
 <td>" . $row['author'] ."</td>
 <td>" . $row['priceRange'] . "</td>
