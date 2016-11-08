@@ -97,9 +97,10 @@
                   <div class="col-md-6">
                     <div id="aliDonut" style="height:250px;">
                       <h4 style="text-align:center;">Ali Ahmadi</h4>
-                      <p style="text-align:center;">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Nam massa risus, molestie in aliquam eu, maximus et quam.
-                        is mi, dictum viverra neque. Donec facilisis est nunc, at rhoncus odio bibendum et.</p>
+                      <p style="text-align:center;">Passionate web developer looking to
+                        master web developing. Ali Ahmadi is currently pursuing an undergrad
+                         degree in Software Engineering at the University of Ontario Institute
+                         of Technology. </p>
                     </div>
                   </div>
 
@@ -168,9 +169,9 @@
 Morris.Donut({
 element: 'aliDonut',
 data: [
-{label: "Java", value: 50},
-{label: "Android", value: 30},
-{label: "Web", value: 20}
+{label: "Java", value: 20},
+{label: "C++", value: 20},
+{label: "HTML/CSS", value: 60}
 ]
 });
 
